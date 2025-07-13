@@ -10,9 +10,12 @@ export function useAnimeSearch() {
   const search = useAppSelector(selectAnimeSearch);
   const debouncedSearch = useDebounce(search, 450);
 
-  const setSearch = useCallback((value: string) => {
-    dispatch(setAnimeSearch(value));
-  }, []);
+  const setSearch = useCallback(
+    (value: string) => {
+      dispatch(setAnimeSearch(value));
+    },
+    [dispatch]
+  );
 
   const results = useGetAnimeSearchQuery(
     {

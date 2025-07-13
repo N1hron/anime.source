@@ -31,11 +31,11 @@ export type AnimeSearchParams = Partial<{
   end_date: string;
 }>;
 
-export type AnimeData<T extends unknown> = {
+export type AnimeData<T> = {
   data: T;
 };
 
-export type AnimeDataWithPagination<T extends unknown> = AnimeData<T[]> & {
+export type AnimeDataWithPagination<T> = AnimeData<T[]> & {
   pagination: Pagination;
 };
 

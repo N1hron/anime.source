@@ -10,7 +10,7 @@ function getCurrentTime(timezone?: string) {
     hour12: false,
   })
     .format(new Date())
-    .split(/,\ |:|\//);
+    .split(/, |:|\//);
 
   return {
     year: parseInt(values[2]),

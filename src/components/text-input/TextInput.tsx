@@ -8,5 +8,5 @@ type TextInputProps = ComponentProps<"input"> & {
 };
 
 export function TextInput({ type = "text", className, ...props }: TextInputProps) {
-  return <input className={clsx(styles.textInput, className)} {...props} />;
+  return <input className={clsx(styles.textInput, className)} type={type} {...props} />;
 }
