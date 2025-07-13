@@ -1,0 +1,11 @@
+.logo {
+  font-size: 2rem;
+  font-weight: 600;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.underline {
+  display: inline-block;
+  border-bottom: var(--border-width) solid var(--color-accent-500);
+}

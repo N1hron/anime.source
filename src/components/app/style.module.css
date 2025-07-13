@@ -1,0 +1,30 @@
+.app {
+  --header-height: 3.925rem;
+  --anime-card-width: 25rem;
+  --search-width: 27.5rem;
+
+  height: 100dvh;
+}
+
+.header {
+  position: fixed;
+  height: var(--header-height);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.main {
+  position: relative;
+  height: 100%;
+  padding: 0 0.75rem;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr minmax(auto, var(--search-width));
+}

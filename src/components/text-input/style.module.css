@@ -1,0 +1,16 @@
+.textInput {
+  background-color: var(--color-main-900);
+  border: none;
+  padding: 0 0.75rem;
+  height: 2.375rem;
+  min-width: 0;
+  border-radius: var(--border-radius);
+
+  &:focus {
+    outline: solid var(--border-width) var(--color-accent-500);
+  }
+
+  &::placeholder {
+    color: var(--color-main-600);
+  }
+}

@@ -1,0 +1,37 @@
+.searchInput {
+  width: var(--search-width);
+  display: flex;
+  justify-content: center;
+
+  input {
+    max-width: var(--anime-card-width);
+    width: 100%;
+    transition-property: max-width, box-shadow;
+    transition-duration: var(--transition-duration);
+  }
+
+  &.enlarged {
+    input {
+      max-width: 100%;
+      box-shadow: 0 0 1rem 0 hsl(0, 0%, 0%);
+    }
+  }
+}
+
+.searchResults {
+  padding: var(--header-height) var(--border-width) var(--border-width);
+  padding-bottom: 0.75rem;
+  justify-self: center;
+  overflow: scroll;
+  scrollbar-width: none;
+  grid-column: 3/4;
+  width: 100%;
+}
+
+.animeList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}

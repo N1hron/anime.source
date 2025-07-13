@@ -1,0 +1,69 @@
+:root {
+  --color-zinc-50: hsl(0, 0%, 98%);
+  --color-zinc-100: hsl(240, 5%, 96%);
+  --color-zinc-200: hsl(240, 6%, 90%);
+  --color-zinc-300: hsl(240, 5%, 84%);
+  --color-zinc-400: hsl(240, 5%, 65%);
+  --color-zinc-500: hsl(240, 4%, 46%);
+  --color-zinc-600: hsl(240, 5%, 34%);
+  --color-zinc-700: hsl(240, 5%, 26%);
+  --color-zinc-800: hsl(240, 4%, 16%);
+  --color-zinc-900: hsl(240, 6%, 10%);
+  --color-zinc-950: hsl(240, 10%, 4%);
+
+  --color-green-50: hsl(152, 81%, 96%);
+  --color-green-100: hsl(149, 80%, 90%);
+  --color-green-200: hsl(152, 76%, 80%);
+  --color-green-300: hsl(156, 72%, 67%);
+  --color-green-400: hsl(158, 64%, 52%);
+  --color-green-500: hsl(160, 84%, 39%);
+  --color-green-600: hsl(161, 94%, 30%);
+  --color-green-700: hsl(163, 94%, 24%);
+  --color-green-800: hsl(163, 88%, 20%);
+  --color-green-900: hsl(164, 86%, 16%);
+  --color-green-950: hsl(166, 91%, 9%);
+
+  --color-indigo-50: hsl(226, 100%, 97%);
+  --color-indigo-100: hsl(226, 100%, 94%);
+  --color-indigo-200: hsl(228, 96%, 89%);
+  --color-indigo-300: hsl(230, 94%, 82%);
+  --color-indigo-400: hsl(234, 89%, 74%);
+  --color-indigo-500: hsl(239, 84%, 67%);
+  --color-indigo-600: hsl(243, 75%, 59%);
+  --color-indigo-700: hsl(245, 58%, 51%);
+  --color-indigo-800: hsl(244, 55%, 41%);
+  --color-indigo-900: hsl(242, 47%, 34%);
+  --color-indigo-950: hsl(244, 47%, 20%);
+
+  --color-main-50: var(--color-zinc-50);
+  --color-main-100: var(--color-zinc-100);
+  --color-main-200: var(--color-zinc-200);
+  --color-main-300: var(--color-zinc-300);
+  --color-main-400: var(--color-zinc-400);
+  --color-main-500: var(--color-zinc-500);
+  --color-main-600: var(--color-zinc-600);
+  --color-main-700: var(--color-zinc-700);
+  --color-main-800: var(--color-zinc-800);
+  --color-main-900: var(--color-zinc-900);
+  --color-main-950: var(--color-zinc-950);
+
+  --color-accent-50: var(--color-green-50);
+  --color-accent-100: var(--color-green-100);
+  --color-accent-200: var(--color-green-200);
+  --color-accent-300: var(--color-green-300);
+  --color-accent-400: var(--color-green-400);
+  --color-accent-500: var(--color-green-500);
+  --color-accent-600: var(--color-green-600);
+  --color-accent-700: var(--color-green-700);
+  --color-accent-800: var(--color-green-800);
+  --color-accent-900: var(--color-green-900);
+  --color-accent-950: var(--color-green-950);
+
+  --color-text: var(--color-zinc-50);
+
+  --border-radius: 0.5rem;
+  --border-width: 0.125rem;
+  --border-width-thin: 0.0625rem;
+
+  --transition-duration: 0.2s;
+}

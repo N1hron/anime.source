@@ -1,0 +1,152 @@
+.animeCard {
+  --vertical-padding: 0.5rem;
+  --horizontal-padding: 0.75rem;
+
+  position: relative;
+  width: 100%;
+  max-width: var(--anime-card-width);
+  height: 6.5rem;
+  display: flex;
+  background-color: var(--color-main-900);
+  border: solid var(--border-width-thin) var(--color-main-800);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-main-700);
+
+    .pin {
+      opacity: 1;
+    }
+
+    .years,
+    .type {
+      opacity: 0;
+    }
+  }
+
+  &.selected {
+    cursor: unset;
+    outline: solid var(--border-width) var(--color-accent-500);
+  }
+}
+
+.poster {
+  height: 100%;
+  aspect-ratio: 225/319;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.content {
+  padding: var(--vertical-padding) var(--horizontal-padding);
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1.15rem 1.00625rem 1fr auto;
+  align-items: center;
+  overflow: hidden;
+}
+
+.lastRow {
+  display: flex;
+  justify-content: space-between;
+  grid-column: 1/3;
+  grid-row: 4/5;
+}
+
+.defaultTitle {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.defaultTitle,
+.englishTitle {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  grid-column: 1/3;
+}
+
+.englishTitle {
+  font-style: italic;
+}
+
+.englishTitle,
+.episodes,
+.years,
+.type,
+.timezone,
+.poster {
+  font-size: 0.875rem;
+  color: var(--color-main-400);
+  text-wrap: nowrap;
+}
+
+.episodes {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  align-self: end;
+}
+
+.years {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  place-self: end;
+}
+
+.status {
+  grid-column: 1/2;
+  grid-row: 4/5;
+  align-self: end;
+  color: var(--color-main-200);
+
+  &.airing {
+    color: var(--color-accent-400);
+  }
+
+  &.notAired {
+    color: var(--color-indigo-400);
+  }
+}
+
+.type {
+  grid-column: 2/3;
+  grid-row: 4/5;
+  place-self: end;
+}
+
+.pin {
+  position: absolute;
+  bottom: var(--vertical-padding);
+  right: var(--horizontal-padding);
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius);
+  opacity: 0;
+  cursor: pointer;
+
+  svg {
+    display: block;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  path {
+    stroke: var(--color-main-200);
+  }
+
+  &:hover {
+    background-color: var(--color-main-800);
+
+    path {
+      stroke: var(--color-main-50);
+    }
+  }
+}
