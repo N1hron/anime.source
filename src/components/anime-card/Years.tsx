@@ -2,7 +2,7 @@ import type { Anime } from "@/types/api/anime";
 
 import styles from "./style.module.css";
 
-export function AnimeCardYears({ aired }: Pick<Anime, "aired">) {
+export function Years({ aired }: Pick<Anime, "aired">) {
   const yearFrom = aired.prop.from.year;
 
   if (!yearFrom) return null;

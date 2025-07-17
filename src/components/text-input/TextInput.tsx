@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import type { ComponentProps } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import styles from "./style.module.css";
 
-type TextInputProps = ComponentProps<"input"> & {
+type TextInputProps = ComponentPropsWithRef<"input"> & {
   type?: "text" | "password" | "email" | "search" | "tel" | "url" | "number" | "textarea";
 };
 

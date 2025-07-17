@@ -1,0 +1,41 @@
+.button {
+  height: 2.25rem;
+  padding: 0.5rem 0.75rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--color-main-900);
+  border-radius: var(--border-radius);
+  color: var(--color-text-200);
+  cursor: pointer;
+  transition-property: color, background-color;
+
+  & svg {
+    display: block;
+    height: 100%;
+    width: auto;
+  }
+
+  & path {
+    stroke: var(--color-text-200);
+    stroke-width: 1.65;
+    transition-property: stroke;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-main-800);
+      color: var(--color-text-50);
+
+      & path {
+        stroke: var(--color-text-50);
+      }
+    }
+  }
+
+  &.icon {
+    padding: 0.5rem;
+  }
+}

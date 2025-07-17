@@ -1,18 +1,15 @@
-import clsx from "clsx";
-import { useMemo } from "react";
+import { memo } from "react";
 
-import { AnimeCardEpisodes } from "./AnimeCardEpisodes";
-import { AnimeCardStatus } from "./AnimeCardStatus";
-import { AnimeCardPin } from "./AnimeCardPin";
-import { AnimeCardYears } from "./AnimeCardYears";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { selectIsSelected, setSelectedAnime } from "@/store/slices/ui";
-import { extractAnimeTitle } from "@/utils/extractAnimeTitle";
+import { Titles } from "./Titles";
+import { Episodes } from "./Episodes";
+import { Years } from "./Years";
+import { Status } from "./Status";
+import { Pin } from "./Pin";
 import type { Anime } from "@/types/api/anime";
 
 import styles from "./style.module.css";
 
-export function AnimeCard({
+export function AnimeCardInner({
   mal_id,
   titles,
   images,
@@ -21,39 +18,35 @@ export function AnimeCard({
   episodes,
   type,
   broadcast,
+  season,
 }: Anime) {
-  const dispatch = useAppDispatch();
-  const isSelected = useAppSelector((state) => selectIsSelected(state, mal_id));
-  const cl = clsx(styles.animeCard, isSelected && styles.selected);
-
-  const { defaultTitle, englishTitle } = useMemo(
-    () => ({
-      defaultTitle: extractAnimeTitle(titles, "Default")!,
-      englishTitle: extractAnimeTitle(titles, "English"),
-    }),
-    [titles]
-  );
-
-  function handleClick() {
-    if (!isSelected) {
-      dispatch(setSelectedAnime(mal_id));
-    }
-  }
+  const imageSrc = images.webp.image_url || undefined;
 
   return (
-    <article className={cl} onClick={handleClick}>
-      <img className={styles.poster} src={images.webp.image_url || undefined} alt="" />
-      <div className={styles.content}>
-        <h3 className={styles.defaultTitle}>{defaultTitle}</h3>
-        {englishTitle && <p className={styles.englishTitle}>{englishTitle}</p>}
-        <AnimeCardEpisodes episodes={episodes} />
-        <AnimeCardYears aired={aired} />
-        <div className={styles.lastRow}>
-          <AnimeCardStatus status={status} type={type} aired={aired} broadcast={broadcast} />
-          {type && <p className={styles.type}>{type}</p>}
+    <article className={styles.animeCard}>
+      <img className={styles.image} src={imageSrc} alt="" />
+      <div className={styles.info}>
+        <Titles titles={titles} />
+        <div className={styles.rows}>
+          <div className={styles.row}>
+            <Episodes episodes={episodes} />
+            <Years aired={aired} />
+          </div>
+          <div className={styles.row}>
+            <Status
+              status={status}
+              type={type}
+              aired={aired}
+              broadcast={broadcast}
+              season={season}
+            />
+            {type && <p className={styles.type}>{type}</p>}
+          </div>
         </div>
       </div>
-      <AnimeCardPin mal_id={mal_id} />
+      <Pin mal_id={mal_id} />
     </article>
   );
 }
+
+export const AnimeCard = memo(AnimeCardInner);

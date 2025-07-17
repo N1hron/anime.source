@@ -1,0 +1,80 @@
+.animeSearch {
+  max-width: 27rem;
+  width: 100%;
+  position: relative;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  transition-property: transform;
+}
+
+.searchInput {
+  position: relative;
+  z-index: 2;
+  max-width: 27rem;
+  width: 100%;
+  padding: 0 1rem;
+  transition-property: padding;
+
+  &.enlarged {
+    padding: 0 0.5rem;
+    box-shadow: 0 0 1rem 0 hsl(0, 0%, 0%);
+  }
+
+  & input {
+    width: 100%;
+    transition-property: box-shadow;
+  }
+}
+
+.searchResults {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100%;
+  padding: 4.375rem 1rem 1rem;
+  overflow: scroll;
+  scrollbar-width: none;
+  transition-property: backdrop-filter, visibility;
+  visibility: hidden;
+  scroll-behavior: smooth;
+
+  &.visible {
+    visibility: visible;
+    backdrop-filter: blur(0.5rem);
+  }
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  & li {
+    max-width: 100%;
+    transition-property: scale, filter;
+
+    &.behindInput {
+      scale: 0.95;
+      filter: brightness(0.5);
+    }
+  }
+}
+
+@media (width < 40rem) {
+  .animeSearch {
+    max-width: none;
+
+    &:has(input:not(:placeholder-shown)) {
+      transform: translateY(-3.425rem);
+    }
+  }
+
+  .searchResults {
+    width: 100vw;
+  }
+}

@@ -1,6 +1,5 @@
 import { Logo } from "../logo/Logo";
-import { SearchInput } from "../search/SearchInput";
-import { SearchResults } from "../search/SearchResults";
+import { AnimeSearch } from "../anime-search/AnimeSearch";
 
 import styles from "./style.module.css";
 
@@ -8,12 +7,10 @@ export function App() {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <Logo />
-        <SearchInput />
+        <Logo className={styles.logo} />
+        <AnimeSearch />
       </header>
-      <main className={styles.main}>
-        <SearchResults />
-      </main>
+      <main className={styles.main}></main>
     </div>
   );
 }

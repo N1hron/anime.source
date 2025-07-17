@@ -33,6 +33,33 @@ export type Anime = {
   demographics: MalUrl[];
 };
 
+export type AnimeFull = Anime & {
+  relations: AnimeRelation[];
+  theme: AnimeTheme;
+  external: AnimeExternal;
+  streaming: AnimeStreaming;
+};
+
+export type AnimeRelation = {
+  relation: string;
+  entry: MalUrl[];
+};
+
+export type AnimeTheme = {
+  openings: string[];
+  endings: string[];
+};
+
+export type AnimeExternal = {
+  name: string;
+  url: string;
+}[];
+
+export type AnimeStreaming = {
+  name: string;
+  url: string;
+}[];
+
 export type AnimeEpisode = {
   mal_id: number;
   url: string | null;
@@ -102,10 +129,12 @@ export type AnimeSeasonName = "summer" | "winter" | "spring" | "fall";
 
 export type AnimeBroadcast = {
   day: string | null;
-  time: string | null;
+  time: AnimeTime | null;
   timezone: string | null;
   string: string | null;
 };
+
+export type AnimeTime = `${number}${number}:${number}${number}`;
 
 export type MalUrl = {
   mal_id: number;

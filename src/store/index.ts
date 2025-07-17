@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { uiSliceReducer } from "./slices/ui";
+import { animeSearchReducer } from "./slices/animeSearch";
 import { animeApiSlice } from "./slices/animeApi";
 
 export const store = configureStore({
   reducer: {
-    ui: uiSliceReducer,
+    animeSearch: animeSearchReducer,
     [animeApiSlice.reducerPath]: animeApiSlice.reducer,
   },
   devTools: import.meta.env.DEV,
