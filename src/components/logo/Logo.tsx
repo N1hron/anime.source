@@ -1,6 +1,7 @@
 import clsx from "clsx";
-import styles from "./style.module.css";
 import type { ComponentPropsWithoutRef } from "react";
+
+import styles from "./style.module.css";
 
 type LogoProps = ComponentPropsWithoutRef<"h1">;
 

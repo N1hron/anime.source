@@ -7,9 +7,9 @@ import type { Anime } from "@/types/api/anime";
 
 import styles from "./style.module.css";
 
-type StatusProps = Pick<Anime, "status" | "type" | "aired" | "broadcast" | "season">;
+type AnimeCardStatusProps = Pick<Anime, "status" | "type" | "aired" | "broadcast" | "season">;
 
-export function Status({ status, type, aired, broadcast, season }: StatusProps) {
+export function AnimeCardStatus({ status, type, aired, broadcast, season }: AnimeCardStatusProps) {
   const { text, hasDate } = useMemo(() => {
     if (status) {
       return getAnimeStatus(status, type, aired, broadcast, season);

@@ -1,80 +1,99 @@
-.animeSearch {
-  max-width: 27rem;
-  width: 100%;
-  position: relative;
-  padding: 1rem 0;
-  display: flex;
-  justify-content: center;
-  transition-property: transform;
+:root {
+  --anime-search-status-color: var(--color-accent-500);
+
+  &:has(.error) {
+    --anime-search-status-color: var(--color-red-500);
+  }
+
+  &:has(.not-found) {
+    --anime-search-status-color: var(--color-indigo-500);
+  }
 }
 
-.searchInput {
-  position: relative;
-  z-index: 2;
-  max-width: 27rem;
+.input {
+  max-width: var(--search-width);
   width: 100%;
   padding: 0 1rem;
   transition-property: padding;
 
-  &.enlarged {
-    padding: 0 0.5rem;
-    box-shadow: 0 0 1rem 0 hsl(0, 0%, 0%);
-  }
-
   & input {
     width: 100%;
-    transition-property: box-shadow;
+    transition-property: box-shadow, outline-color;
+
+    &:focus {
+      outline-color: var(--anime-search-status-color);
+    }
+
+    &::selection {
+      background-color: var(--anime-search-status-color);
+    }
+  }
+
+  &.enlarged {
+    padding: 0 0.5rem;
+
+    & input {
+      box-shadow: 0 0 1rem 0 hsl(0, 0%, 0%);
+    }
   }
 }
 
-.searchResults {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 100dvh;
+.results {
+  position: relative;
+  max-width: var(--search-width);
   width: 100%;
-  padding: 4.375rem 1rem 1rem;
-  overflow: scroll;
-  scrollbar-width: none;
-  transition-property: backdrop-filter, visibility;
-  visibility: hidden;
-  scroll-behavior: smooth;
+  flex-shrink: 0;
+}
 
-  &.visible {
-    visibility: visible;
-    backdrop-filter: blur(0.5rem);
+.resultsList {
+  padding: var(--header-height) 1rem 1rem;
+}
+
+.status {
+  padding-top: calc(var(--header-height) - 1rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  /* filter: drop-shadow(0 0 0.25rem var(--anime-search-status-color)); */
+
+  &:global {
+    animation-name: appear;
+    animation-duration: var(--transition-duration-slow);
+    animation-fill-mode: backwards;
   }
 
-  & ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  & li {
-    max-width: 100%;
-    transition-property: scale, filter;
-
-    &.behindInput {
-      scale: 0.95;
-      filter: brightness(0.5);
+  &.loading {
+    & .statusIcon {
+      &:global {
+        animation-name: rotate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
     }
   }
 }
 
-@media (width < 40rem) {
-  .animeSearch {
-    max-width: none;
+.statusIcon {
+  width: 6rem;
+  height: auto;
 
-    &:has(input:not(:placeholder-shown)) {
-      transform: translateY(-3.425rem);
-    }
+  & path {
+    stroke: var(--anime-search-status-color);
+    stroke-width: 1;
   }
+}
 
-  .searchResults {
-    width: 100vw;
+.statusText {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: var(--anime-search-status-color);
+
+  &::selection {
+    background-color: var(--anime-search-status-color);
   }
 }

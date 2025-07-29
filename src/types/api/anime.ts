@@ -40,6 +40,11 @@ export type AnimeFull = Anime & {
   streaming: AnimeStreaming;
 };
 
+export type AnimeShort = Pick<
+  Anime,
+  "mal_id" | "images" | "titles" | "episodes" | "aired" | "status" | "type" | "broadcast" | "season"
+>;
+
 export type AnimeRelation = {
   relation: string;
   entry: MalUrl[];

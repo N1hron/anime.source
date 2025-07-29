@@ -1,0 +1,15 @@
+.image {
+  display: grid;
+  place-content: center;
+  transition-property: opacity, scale, filter;
+  transition-duration: var(--transition-duration-slow);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-400);
+
+  &.loading {
+    opacity: 0;
+    filter: blur(0.0625rem) brightness(0.5);
+    pointer-events: none;
+    user-select: none;
+  }
+}

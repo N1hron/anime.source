@@ -1,0 +1,35 @@
+.revealList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  height: 100%;
+
+  &.horizontal {
+    flex-direction: row;
+    overflow-y: revert;
+    overflow-x: scroll;
+  }
+}
+
+.item {
+  &.blurred {
+    & .itemContent {
+      scale: 0.95;
+      filter: blur(0.0625rem) brightness(0.5);
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+}
+
+.itemContent {
+  transition-property: scale, filter;
+
+  &:global {
+    animation-name: appear;
+    animation-duration: var(--transition-duration-slow);
+    animation-fill-mode: backwards;
+  }
+}

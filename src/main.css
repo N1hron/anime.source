@@ -1,12 +1,14 @@
 @import url("../node_modules/modern-normalize/modern-normalize.css");
 @import url("styles/fonts.css");
 @import url("styles/root.css");
+@import url("styles/animations.css");
 
 body {
   background-color: var(--color-main-950);
   color: var(--color-text-50);
   font-family: "Nunito", sans-serif;
   font-weight: 500;
+  font-size: var(--font-size-sm);
 }
 
 * {
@@ -21,6 +23,10 @@ body {
     background-color: var(--color-accent-500);
     color: var(--color-text-50);
   }
+}
+
+img {
+  max-width: 100%;
 }
 
 ul,

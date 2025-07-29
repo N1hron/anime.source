@@ -1,41 +1,57 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { AppState } from "..";
+import { createSelector, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 type AnimeSearchState = {
   value: string;
-  resultsBehindInput: Record<number, true>;
+  itemsUnderInputCount: number;
+  inputBottom: number;
 };
 
 const initialState: AnimeSearchState = {
   value: "",
-  resultsBehindInput: [],
+  itemsUnderInputCount: 0,
+  inputBottom: 0,
 };
 
 const animeSearchSlice = createSlice({
   name: "animeSearch",
   initialState,
   reducers: {
-    setAnimeSearchValue: (state, action: PayloadAction<AnimeSearchState["value"]>) => {
+    setSearchValue: (state, action: PayloadAction<AnimeSearchState["value"]>) => {
       state.value = action.payload;
     },
-    setSearchResultsBehindInput: (
-      state,
-      action: PayloadAction<AnimeSearchState["resultsBehindInput"]>
-    ) => {
-      state.resultsBehindInput = action.payload;
+    incrementItemsUnderInputCount: (state) => {
+      state.itemsUnderInputCount++;
+    },
+    decrementItemsUnderInputCount: (state) => {
+      state.itemsUnderInputCount--;
+    },
+    resetItemsUnderInputCount: (state) => {
+      state.itemsUnderInputCount = 0;
+    },
+    setInputBottom: (state, action: PayloadAction<AnimeSearchState["inputBottom"]>) => {
+      state.inputBottom = action.payload;
     },
   },
   selectors: {
-    selectAnimeSearchValue: (state) => state.value,
-    selectSearchResultsBehindInput: (state) => state.resultsBehindInput,
+    selectSearchValue: (state) => state.value,
+    selectItemsUnderInputCount: (state) => state.itemsUnderInputCount,
+    selectInputBottom: (state) => state.inputBottom,
   },
 });
 
 export const animeSearchReducer = animeSearchSlice.reducer;
-export const { setAnimeSearchValue, setSearchResultsBehindInput } = animeSearchSlice.actions;
-export const { selectAnimeSearchValue, selectSearchResultsBehindInput } =
+export const {
+  setSearchValue,
+  incrementItemsUnderInputCount,
+  decrementItemsUnderInputCount,
+  resetItemsUnderInputCount,
+  setInputBottom,
+} = animeSearchSlice.actions;
+export const { selectSearchValue, selectItemsUnderInputCount, selectInputBottom } =
   animeSearchSlice.selectors;
 
-export const selectIsSearchResultsBehindInput = (state: AppState) => {
-  return !!state.animeSearch.resultsBehindInput[0];
-};
+export const selectHasItemsUnderInput = createSelector(selectItemsUnderInputCount, (n) => n > 0);
+export const selectIsLastItemUnderInput = (index: number) =>
+  createSelector(selectItemsUnderInputCount, (n) => n === index + 1);
+export const selectIsItemUnderInput = (index: number) =>
+  createSelector(selectItemsUnderInputCount, (n) => n >= index + 1);

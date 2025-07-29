@@ -1,9 +1,9 @@
 .animeCard {
-  --padding: 0.5rem;
+  --card-padding: 0.5rem;
 
   position: relative;
-  width: var(--anime-card-width);
-  max-width: 100%;
+  max-width: var(--anime-card-width);
+  width: 100%;
   height: 6.25rem;
   display: flex;
   background-color: var(--color-main-900);
@@ -15,73 +15,74 @@
   container-type: inline-size;
   container-name: anime-card;
 
-  &:hover {
-    border-color: var(--color-main-700);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--color-main-700);
 
-    .pin {
-      opacity: 1;
+      & .pin {
+        opacity: 1;
+      }
+
+      & .years,
+      & .type {
+        opacity: 0;
+      }
     }
-
-    .years,
-    .type {
-      opacity: 0;
-    }
-  }
-
-  &.selected {
-    cursor: unset;
-    outline: solid var(--border-width-thin) var(--color-accent-500);
-    border-color: var(--color-accent-500);
   }
 }
 
-.image {
-  height: 100%;
+.poster {
   aspect-ratio: 0.7;
   object-fit: cover;
-  flex-shrink: 0;
-  border-right: solid var(--border-width-thin) var(--color-main-800);
 }
 
 .info {
-  padding: var(--padding);
+  padding: var(--card-padding);
   overflow: hidden;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  font-size: 0.875rem;
+  font-size: var(--font-size-xs);
   color: var(--color-main-400);
 }
 
-.row {
+.infoRow {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 
-  &:has(:not(:only-child)) {
-    justify-content: space-between;
+  & > * {
+    flex-grow: 1;
+  }
+
+  &:nth-child(2) {
+    flex-grow: 1;
+    align-items: flex-end;
+  }
+
+  &:nth-child(3) {
+    height: 1.15rem;
   }
 }
 
 .titles {
-  & h3 {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--color-text-50);
-  }
+  height: 2.15625rem;
 
-  & h3,
-  & p {
-    overflow: hidden;
+  & > * {
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 100%;
+    overflow: hidden;
   }
+}
 
-  & p {
-    font-style: italic;
-  }
+.mainTitle {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text-50);
+}
+
+.englishTitle {
+  font-style: italic;
 }
 
 .episodes {
@@ -91,14 +92,12 @@
 .years,
 .type {
   text-align: right;
-  flex-grow: 1;
   transition-property: opacity;
 }
 
 .status {
-  font-size: 1rem;
-  color: var(--color-text-50);
-  flex-grow: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-200);
   text-wrap: nowrap;
 
   &.airing {
@@ -112,13 +111,21 @@
 
 .timezone,
 .timezoneMini {
-  font-size: 0.875rem;
+  font-size: var(--font-size-xs);
   color: var(--color-main-500);
-  font-style: italic;
+  text-decoration: underline dotted;
 }
 
 .timezoneMini {
   display: none;
+}
+
+button.pin {
+  position: absolute;
+  bottom: var(--card-padding);
+  right: var(--card-padding);
+  opacity: 0;
+  transition-property: color, background-color, opacity;
 }
 
 @container anime-card (width < 23rem) {
@@ -135,12 +142,4 @@
   .timezoneMini {
     display: none;
   }
-}
-
-button.pin {
-  position: absolute;
-  bottom: var(--padding);
-  right: var(--padding);
-  opacity: 0;
-  transition-property: color, background-color, opacity;
 }
